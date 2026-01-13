@@ -33,6 +33,13 @@ macro_rules! impl_ct_eq_with_cmov_eq {
                     self.cmoveq(other, 1, &mut ret.0);
                     ret
                 }
+
+                #[inline]
+                fn ct_ne(&self, other: &Self) -> Choice {
+                    let mut ret = Choice::FALSE;
+                    self.cmovne(other, 1, &mut ret.0);
+                    ret
+                }
             }
         )+
     };
